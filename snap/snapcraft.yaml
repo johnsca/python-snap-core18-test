@@ -7,8 +7,12 @@ grade: devel
 confinement: classic
 
 apps:
-  tst:
+  unwrapped:
     command: bin/tst
+  wrapped:
+    command: bin/snap-env $SNAP/bin/tst
+  tst:  # default command (same name as snap)
+    command: bin/snap-env $SNAP/bin/tst
 
 parts:
   tst:
@@ -18,3 +22,6 @@ parts:
     parse-info: ['setup.py']
     requirements:
       - requirements.txt
+    override-build: |
+      snapcraftctl build
+      cp helpers/snap-env $SNAPCRAFT_PART_INSTALL/bin

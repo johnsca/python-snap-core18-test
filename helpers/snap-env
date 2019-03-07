@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH=$SNAP/bin:$SNAP/usr/bin:$SNAP/usr/local/bin:$PATH
+
+exec "$@"
