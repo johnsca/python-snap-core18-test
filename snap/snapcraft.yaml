@@ -1,0 +1,20 @@
+name: tst
+summary: Test python snap
+base: core18
+adopt-info: tst
+
+grade: devel
+confinement: classic
+
+apps:
+  tst:
+    command: bin/tst
+
+parts:
+  tst:
+    plugin: python
+    python-version: python3
+    source: .
+    parse-info: ['setup.py']
+    requirements:
+      - requirements.txt
